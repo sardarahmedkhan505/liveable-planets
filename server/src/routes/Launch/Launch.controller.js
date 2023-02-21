@@ -5,7 +5,17 @@ function httpGetAllLaunches(req, res) {
 }
 function httpAddNewLaunches(req, res) {
     const launch = req.body;
-    launch.lauchDate = new Date(launch.lauchDate);
+    if (!launch.mission || !launch.rocket || !launch.launchDate || !launch.target) {
+        return res.status(400).json({
+            error: "The entered launch properties are missing or wrongly entered"
+        })
+    }
+    launch.launchDate = new Date(launch.launchDate);
+    if (launch.launchDate.toString() === 'Invalid Date') {
+        return res.status(400).json({
+            error: "The entered date or its format is not allowed"
+        })
+    }
     addNewLaunch(launch);
     return res.status(201).json(launch);
 }

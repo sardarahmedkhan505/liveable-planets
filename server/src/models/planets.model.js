@@ -24,7 +24,7 @@ function loadPlanetsData() {
                 console.log(err);
                 reject(err);
             }).on('end', () => {
-                console.log('Our process is done');
+                // console.log(`${habitablePlanets.length} habitable planets found!`);
                 resolve();
             });
     })
@@ -33,7 +33,7 @@ function loadPlanetsData() {
 function getAllPlanets() {
     return habitablePlanets;
 }
-
+console.log("these are habitable planets", habitablePlanets);
 module.exports = {
     loadPlanetsData,
     getAllPlanets

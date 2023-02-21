@@ -1,4 +1,4 @@
-const planetRouter = require('./routes/planets/planets.routes');
+const { planetRouter } = require('./routes/planets/planets.routes');
 const { launchRouter } = require('./routes/Launch/Launch.route');
 const morgan = require('morgan')
 const express = require('express');
